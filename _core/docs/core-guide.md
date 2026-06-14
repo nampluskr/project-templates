@@ -11,17 +11,22 @@ updated: 2026-06-14
 
 ## 1. 워크스페이스 기능
 
-이 레포(`project-templates`)는 재사용 가능한 프로젝트 워크스페이스 템플릿을 관리하는 소스 레포이다.
+이 레포(`project-templates`)는 하위 프로젝트를 설계하는 메타 레포이다.
+
+각 하위 프로젝트는 이 레포에서 설계된 템플릿을 복사하여 독립 Git 레포로 생성되며,
+진행상황 관리·할일 관리·문서 작성을 완전히 독립적으로 수행한다.
+이 레포는 그 구조와 규칙을 설계·정의하는 역할만 수행한다.
 
 두 가지 역할을 동시에 수행한다.
 
 | 역할 | 설명 |
 |---|---|
-| 템플릿 소스 레포 | `project-docs-template`, `project-wiki-template`, `project-coding-template` 저장 |
+| 템플릿 설계 레포 | `project-docs-template`, `project-wiki-template`, `project-coding-template` 구조 정의 |
 | 템플릿 관리 프로젝트 | 이 레포 자체를 운영하기 위한 `CLAUDE.md`, `_core/`, `_core/scripts/` 보유 |
 
-루트 레벨 파일(`CLAUDE.md`, `AGENTS.md`, `_core/`)은 템플릿 레포 자체 운영용이다.
+루트 레벨 파일(`CLAUDE.md`, `AGENTS.md`, `_core/`)은 이 레포 자체 운영용이다.
 `templates/project-*-template/` 내부 파일이 새 프로젝트에 복사된다.
+새 프로젝트 생성 후 그 내부 작업은 이 레포 범위 밖이다.
 
 ## 2. 워크스페이스 구조
 
@@ -54,7 +59,7 @@ project-templates/
 |---|---|---|
 | `_core/rules/` | 운영 규칙, 에이전트 행동 규칙, 마크다운 스타일 | 사람 |
 | `_core/commands/` | 커스텀 명령어 정의 | 사람 |
-| `_core/docs/` | 운영 가이드 | 사람 |
+| `_core/docs/` | 운영 가이드, 설계 이력 | 사람 + 에이전트 |
 | `_core/sessions/` | 세션 핸드오프 문서 | 에이전트 |
 | `_core/scripts/` | 자동화 스크립트 | 사람 |
 | `_core/refs/` | 참조 전용 문서 (수정 금지) | — |

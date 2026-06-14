@@ -46,6 +46,9 @@ shared/ → templates/project-docs-template/
 
 | 파일 | 이유 |
 |---|---|
+| `README.md` | 구조 섹션이 템플릿마다 다름 |
+| `.gitignore` | 템플릿 전용 항목(data/, .ipynb_checkpoints 등)이 다름 |
+| `_core/docs/project-guide.md` | 폴더 구조 설명이 템플릿마다 다름 — 각 템플릿에서 독립 정의 |
 | `AGENTS.md` | 템플릿 유형마다 내용이 다름 |
 | `CLAUDE.md` | 템플릿 유형마다 내용이 다름 |
 | `wiki/`, `src/`, `pyproject.toml` 등 | 템플릿 전용 구조 |

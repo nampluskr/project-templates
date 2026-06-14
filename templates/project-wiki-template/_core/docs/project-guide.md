@@ -24,7 +24,7 @@ updated: YYYY-MM-DD
 | `_core/` | 프로젝트 운영 규칙, 커맨드, 가이드, 세션 |
 | `inbox/` | 아직 분류하지 않은 임시 입력 자료 |
 | `sources/` | 정리된 참고 자료 |
-| `wiki/` | 작업 중 지식 베이스, 개념 노트, 참조 |
+| `wiki/` | 프로젝트 전용 LLM Wiki 지식 저장소 |
 | `docs/` | 최종 문서 |
 | `outputs/` | 생성물, 빌드 결과, 내보내기 |
 
@@ -42,11 +42,14 @@ inbox/ → sources/ → wiki/ → docs/ → outputs/
 _core/
 ├── rules/
 │   ├── agent-rules.md
-│   └── markdown-rules.md
+│   ├── markdown-rules.md
+│   └── wiki-rules.md      # wiki/ 운영 규칙
 ├── commands/
 │   └── session-handoff.md
 ├── docs/
 │   ├── project-guide.md   # 이 파일
+│   ├── project-spec.md
+│   ├── project-todo.md
 │   └── project-log.md
 └── sessions/
 ```

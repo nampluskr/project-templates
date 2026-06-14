@@ -11,4 +11,4 @@ updated: YYYY-MM-DD
 
 | Date | 작업 내용 | 비고 |
 |---|---|---|
-| YYYY-MM-DD | 프로젝트 초기화 | `project-docs-template` 기반 |
+| YYYY-MM-DD | 프로젝트 초기화 | |

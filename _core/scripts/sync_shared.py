@@ -22,7 +22,6 @@ TEMPLATES = [
     "project-coding-template",
 ]
 
-
 def get_shared_files() -> list[Path]:
     return [p for p in SHARED_DIR.rglob("*") if p.is_file()]
 
