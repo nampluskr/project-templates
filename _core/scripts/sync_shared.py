@@ -1,7 +1,7 @@
 """
 sync_shared.py
 
-shared/_core/ 의 공통 파일을 templates/*/_core/ 로 동기화한다.
+shared/ 의 공통 파일을 templates/*/ 로 동기화한다.
 
 사용법:
     python _core/scripts/sync_shared.py --dry-run
@@ -13,7 +13,7 @@ import shutil
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent.parent
-SHARED_CORE = REPO_ROOT / "shared" / "_core"
+SHARED_DIR = REPO_ROOT / "shared"
 TEMPLATES_DIR = REPO_ROOT / "templates"
 
 TEMPLATES = [
@@ -24,7 +24,7 @@ TEMPLATES = [
 
 
 def get_shared_files() -> list[Path]:
-    return [p for p in SHARED_CORE.rglob("*") if p.is_file()]
+    return [p for p in SHARED_DIR.rglob("*") if p.is_file()]
 
 
 def sync(dry_run: bool) -> None:
@@ -37,11 +37,11 @@ def sync(dry_run: bool) -> None:
     synced = 0
 
     for template in TEMPLATES:
-        template_core = TEMPLATES_DIR / template / "_core"
+        template_root = TEMPLATES_DIR / template
 
         for src in shared_files:
-            rel = src.relative_to(SHARED_CORE)
-            dest = template_core / rel
+            rel = src.relative_to(SHARED_DIR)
+            dest = template_root / rel
 
             if dest.exists():
                 src_text = src.read_text(encoding="utf-8")
@@ -52,7 +52,7 @@ def sync(dry_run: bool) -> None:
             else:
                 status = "신규"
 
-            print(f"[{status}] {template}/_core/{rel}")
+            print(f"[{status}] {template}/{rel}")
 
             if not dry_run:
                 dest.parent.mkdir(parents=True, exist_ok=True)
@@ -72,7 +72,7 @@ def sync(dry_run: bool) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="shared/_core/ → templates/*/_core/ 동기화")
+    parser = argparse.ArgumentParser(description="shared/ → templates/*/ 동기화")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--dry-run", action="store_true", help="변경 예정 파일 목록만 출력")
     group.add_argument("--apply", action="store_true", help="실제 동기화 실행")

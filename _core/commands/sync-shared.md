@@ -7,7 +7,7 @@ updated: 2026-06-14
 # 커스텀 명령어: `sync-shared` / `공통 파일 동기화`
 
 `sync-shared 실행` 또는 `@sync-shared.md 실행`으로 호출한다.
-`shared/_core/` 의 공통 파일을 각 템플릿의 `_core/` 로 동기화한다.
+`shared/` 의 공통 파일을 각 템플릿 루트로 동기화한다.
 
 ## 1. 실행 절차
 
@@ -38,16 +38,19 @@ python _core/scripts/sync_shared.py --apply
 
 ## 2. 동기화 범위
 
-동기화 대상과 제외 대상은 다음과 같다.
+`shared/` 아래 모든 파일이 동기화 대상이다.
 
-| 동기화 (`shared/_core/` → `templates/*/_core/`) | 제외 |
+| 소스 | 대상 |
 |---|---|
-| `rules/markdown-rules.md` | 템플릿별 전용 파일 |
-| `rules/agent-rules.md` | |
-| `commands/session-handoff.md` | |
+| `shared/_core/` | `templates/*/_core/` |
+| `shared/README.md` | `templates/*/README.md` |
+| `shared/.gitignore` | `templates/*/.gitignore` |
+| `shared/_project/` | `templates/*/_project/` |
+
+`shared/` 에 파일/폴더를 추가하면 다음 sync 실행 시 자동으로 반영된다.
 
 ## 3. 주의사항
 
-- 템플릿별 `_core/` 에 추가된 전용 파일은 삭제하지 않는다.
-- `shared/_core/` 에 없는 파일은 건드리지 않는다.
-- 동기화는 덮어쓰기 방식이다. `shared/_core/` 가 SSOT이다.
+- 템플릿별 전용 파일(`AGENTS.md`, `CLAUDE.md` 등)은 `shared/` 에 두지 않는다.
+- 템플릿별로 추가된 고유 파일은 sync로 삭제되지 않는다.
+- 동기화는 덮어쓰기 방식이다. `shared/` 가 SSOT이다.

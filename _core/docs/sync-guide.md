@@ -6,7 +6,7 @@ updated: 2026-06-14
 
 # sync-guide.md
 
-`shared/_core/` 와 `templates/*/_core/` 간 동기화 방법과 주의사항을 설명한다.
+`shared/` 와 `templates/*/` 간 동기화 구조, 원칙, 절차를 설명한다.
 
 ## 1. 동기화 구조
 
@@ -15,45 +15,89 @@ updated: 2026-06-14
 | 경로 | 역할 |
 |---|---|
 | `project-templates/_core/` | 이 레포 자체 운영 파일. 새 프로젝트에 복사되지 않음 |
-| `shared/_core/` | 각 템플릿의 `_core/` 원본 (SSOT) |
-| `templates/*/_core/` | `shared/_core/` 에서 동기화된 결과. 새 프로젝트 생성 시 복사됨 |
+| `shared/` | 각 템플릿의 공통 파일 원본 (SSOT) |
+| `templates/*/` | `shared/` 에서 동기화된 결과. 새 프로젝트 생성 시 복사됨 |
 
-## 2. 동기화 원칙
+동기화 방향은 단방향이다.
 
-공통 파일 관리 원칙은 다음과 같다.
+```text
+shared/ → templates/project-docs-template/
+        → templates/project-wiki-template/
+        → templates/project-coding-template/
+```
 
-- `shared/_core/` 를 수정한 후 `scripts/sync_shared.py` 로 각 템플릿에 배포한다.
-- 배포는 덮어쓰기 방식이다. 템플릿별 `_core/` 에 추가된 전용 파일은 삭제하지 않는다.
-- 배포 전 반드시 dry-run으로 변경 대상을 확인한다.
-- 템플릿별 `_core/` 를 직접 수정하지 않는다.
+## 2. 동기화 대상
 
-## 3. 동기화 대상 파일
+`shared/` 아래 모든 파일이 동기화 대상이다.
 
-`shared/_core/` 에서 관리하는 공통 파일 목록은 다음과 같다.
-
-| 파일 | 경로 |
+| 소스 | 대상 |
 |---|---|
-| 에이전트 행동 규칙 | `shared/_core/rules/agent-rules.md` |
-| 마크다운 작성 규칙 | `shared/_core/rules/markdown-rules.md` |
-| 세션 핸드오프 커맨드 | `shared/_core/commands/session-handoff.md` |
+| `shared/_core/rules/` | `templates/*/_core/rules/` |
+| `shared/_core/commands/` | `templates/*/_core/commands/` |
+| `shared/README.md` | `templates/*/README.md` |
+| `shared/.gitignore` | `templates/*/.gitignore` |
+| `shared/_project/` | `templates/*/_project/` |
 
-## 4. 동기화 절차
+`shared/` 에 파일이나 폴더를 추가하면 다음 sync 실행 시 자동으로 반영된다.
+
+## 3. 동기화 제외 대상
+
+다음 파일은 템플릿별로 독립 관리한다. `shared/` 에 두지 않는다.
+
+| 파일 | 이유 |
+|---|---|
+| `AGENTS.md` | 템플릿 유형마다 내용이 다름 |
+| `CLAUDE.md` | 템플릿 유형마다 내용이 다름 |
+| `wiki/`, `src/`, `pyproject.toml` 등 | 템플릿 전용 구조 |
+
+## 4. 동기화 원칙
+
+- `shared/` 를 수정한 후 `_core/scripts/sync_shared.py` 로 각 템플릿에 배포한다.
+- 배포는 덮어쓰기 방식이다. `shared/` 가 SSOT이다.
+- 템플릿별 `_core/` 에 추가된 전용 파일은 삭제하지 않는다.
+- 배포 전 반드시 dry-run으로 변경 대상을 확인한다.
+- 템플릿별 공통 파일을 직접 수정하지 않는다.
+
+## 5. 동기화 절차
 
 공통 파일 수정 후 동기화 절차는 다음과 같다.
 
-1. `shared/_core/` 에서 파일 수정
+1. `shared/` 에서 파일 수정
 2. `sync-shared` 커맨드 실행 (dry-run)
 3. 변경 대상 확인
 4. `sync-shared` 커맨드 실행 (`--apply`)
-5. `templates/*/_core/` 결과 검증
+5. `templates/*/` 결과 검증
 
 상세 절차는 `_core/commands/sync-shared.md` 를 참조한다.
 
-## 5. 템플릿별 전용 파일
+## 6. 스크립트
+
+동기화 스크립트 경로와 사용법은 다음과 같다.
+
+```bash
+# 변경 예정 목록 확인
+python _core/scripts/sync_shared.py --dry-run
+
+# 실제 동기화 실행
+python _core/scripts/sync_shared.py --apply
+```
+
+스크립트는 `shared/` 아래 모든 파일을 대상으로 동작한다.
+
+## 7. 커밋
+
+동기화 후 커밋 예시는 다음과 같다.
+
+```bash
+git add templates/
+git commit -m "Sync shared files into templates"
+git push origin main
+```
+
+## 8. 템플릿별 전용 파일
 
 각 템플릿의 `_core/` 에는 공통 파일 외에 템플릿 전용 파일이 추가될 수 있다.
-
-전용 파일은 `shared/_core/` 에 포함하지 않으며 동기화 시 삭제되지 않는다.
+전용 파일은 `shared/` 에 포함하지 않으며 동기화 시 삭제되지 않는다.
 
 | 템플릿 | 전용 파일 예시 |
 |---|---|
