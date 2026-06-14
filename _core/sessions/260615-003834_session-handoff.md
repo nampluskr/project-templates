@@ -19,7 +19,8 @@ updated: 2026-06-15
 - `CLAUDE.md`, `core-guide.md` 에 메타 레포 목적 및 하위 프로젝트 독립성 원칙 명시
 - `sync-guide.md` 제외 대상에 `README.md`, `.gitignore`, `project-guide.md` 추가
 - `project-wiki-template` 전용 구조 정의: `CLAUDE.md` 재작성, `wiki-rules.md` 신규 작성
-- 전체 커밋 완료 (`8853290`)
+- `wiki-guide.md` 신규 작성 — 사람이 참조하는 wiki/ 운영 방식 (목적, docs와의 관계, 권장 구조, 범위 제한, Obsidian 사용 원칙, 초기 폴더 생성)
+- 전체 커밋 완료 (`8853290`), wiki-guide.md 는 미커밋 상태
 
 ## 2. 확정된 결정사항
 
@@ -30,7 +31,7 @@ updated: 2026-06-15
 | shared/ SSOT 범위 | `_core/docs/`, `_core/rules/`, `_core/commands/`, `_core/sessions/`, 공통 빈 폴더 |
 | sync 제외 파일 | `README.md`, `.gitignore`, `_core/docs/project-guide.md` — 각 템플릿에서 독립 정의 |
 | design-log.md 역할 | 이 레포의 템플릿 설계 이력 기록. 하위 프로젝트 작업 이력 아님 |
-| wiki-template 전용 파일 | `CLAUDE.md` (wiki 원칙 포함), `_core/rules/wiki-rules.md` (LLM Wiki Policy) |
+| wiki-template 전용 파일 | `CLAUDE.md` (wiki 원칙 포함), `_core/rules/wiki-rules.md` (에이전트 행동 규칙), `_core/docs/wiki-guide.md` (사람용 운영 가이드) |
 
 ## 3. 현재 파일 구조
 
@@ -93,4 +94,5 @@ shared/
 | 동기화 스크립트 | `_core/scripts/sync_shared.py` |
 | 동기화 가이드 | `_core/docs/sync-guide.md` |
 | 설계 이력 | `_core/docs/design-log.md` |
-| wiki 운영 규칙 | `templates/project-wiki-template/_core/rules/wiki-rules.md` |
+| wiki 에이전트 행동 규칙 | `templates/project-wiki-template/_core/rules/wiki-rules.md` |
+| wiki 운영 가이드 (사람용) | `templates/project-wiki-template/_core/docs/wiki-guide.md` |

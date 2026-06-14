@@ -1,20 +1,12 @@
-"""
-sync_shared.py
-
-shared/ 의 공통 파일을 templates/*/ 로 동기화한다.
-
-사용법:
-    python _core/scripts/sync_shared.py --dry-run
-    python _core/scripts/sync_shared.py --apply
-"""
+# sync_shared.py: Sync common files from shared/ to each template directory.
 
 import argparse
+import os
 import shutil
-from pathlib import Path
 
-REPO_ROOT = Path(__file__).parent.parent.parent
-SHARED_DIR = REPO_ROOT / "shared"
-TEMPLATES_DIR = REPO_ROOT / "templates"
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SHARED_DIR = os.path.join(REPO_ROOT, "shared")
+TEMPLATES_DIR = os.path.join(REPO_ROOT, "templates")
 
 TEMPLATES = [
     "project-docs-template",
@@ -22,8 +14,13 @@ TEMPLATES = [
     "project-coding-template",
 ]
 
-def get_shared_files() -> list[Path]:
-    return [p for p in SHARED_DIR.rglob("*") if p.is_file()]
+
+def get_shared_files() -> list[str]:
+    result = []
+    for dirpath, _, filenames in os.walk(SHARED_DIR):
+        for filename in filenames:
+            result.append(os.path.join(dirpath, filename))
+    return result
 
 
 def sync(dry_run: bool) -> None:
@@ -36,15 +33,17 @@ def sync(dry_run: bool) -> None:
     synced = 0
 
     for template in TEMPLATES:
-        template_root = TEMPLATES_DIR / template
+        template_root = os.path.join(TEMPLATES_DIR, template)
 
         for src in shared_files:
-            rel = src.relative_to(SHARED_DIR)
-            dest = template_root / rel
+            rel = os.path.relpath(src, SHARED_DIR)
+            dest = os.path.join(template_root, rel)
 
-            if dest.exists():
-                src_text = src.read_text(encoding="utf-8")
-                dest_text = dest.read_text(encoding="utf-8")
+            if os.path.exists(dest):
+                with open(src, encoding="utf-8") as f:
+                    src_text = f.read()
+                with open(dest, encoding="utf-8") as f:
+                    dest_text = f.read()
                 if src_text == dest_text:
                     continue
                 status = "수정"
@@ -54,7 +53,7 @@ def sync(dry_run: bool) -> None:
             print(f"[{status}] {template}/{rel}")
 
             if not dry_run:
-                dest.parent.mkdir(parents=True, exist_ok=True)
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
                 shutil.copy2(src, dest)
 
             synced += 1

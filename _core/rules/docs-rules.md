@@ -4,7 +4,7 @@ created: 2026-06-14
 updated: 2026-06-14
 ---
 
-# markdown-rules.md
+# docs-rules.md
 
 이 워크스페이스에서 작성하는 모든 마크다운 문서에 적용되는 필수 규칙이다.
 

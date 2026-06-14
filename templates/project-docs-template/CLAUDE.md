@@ -41,7 +41,8 @@ updated: YYYY-MM-DD
 ## 4. 핵심 행동 규칙
 
 - 작업 전 `_core/rules/agent-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
+- 마크다운 문서 작성·수정 시 `_core/rules/docs-rules.md` 를 따른다.
+- Python 스크립트 작성·수정 시 `_core/rules/python-rules.md` 를 따른다.
 - 루트 폴더 구조는 변경하지 않는다.
 
 ## 5. 참조 경로
@@ -49,7 +50,11 @@ updated: YYYY-MM-DD
 | 항목 | 경로 |
 |---|---|
 | 에이전트 규칙 | `_core/rules/agent-rules.md` |
-| 마크다운 규칙 | `_core/rules/markdown-rules.md` |
+| 마크다운 규칙 | `_core/rules/docs-rules.md` |
+| Python 규칙 | `_core/rules/python-rules.md` |
+| 주제 분류 | `_core/docs/subject-guide.md` |
 | 프로젝트 가이드 | `_core/docs/project-guide.md` |
+| 프로젝트 명세 | `_core/docs/project-spec.md` |
+| 할일 관리 | `_core/docs/project-todo.md` |
 | 작업 이력 | `_core/docs/project-log.md` |
 | 세션 핸드오프 | `_core/commands/session-handoff.md` |

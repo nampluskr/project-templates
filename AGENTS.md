@@ -71,7 +71,7 @@ project-templates/
 | 항목 | 경로 |
 |---|---|
 | 에이전트 행동 규칙 | `_core/rules/agent-rules.md` |
-| 문서 작성 스타일 규칙 | `_core/rules/markdown-rules.md` |
+| 문서 작성 스타일 규칙 | `_core/rules/docs-rules.md` |
 | 템플릿 관리 규칙 | `_core/rules/template-rules.md` |
 | 구조 설명 및 가이드 | `_core/docs/core-guide.md` |
 | 공통 파일 동기화 커맨드 | `_core/commands/sync-shared.md` |
@@ -81,7 +81,7 @@ project-templates/
 ## 5. 핵심 행동 규칙
 
 - 작업 전 반드시 `_core/rules/agent-rules.md` 와 `_core/rules/template-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
+- 모든 마크다운 문서는 `_core/rules/docs-rules.md` 를 따른다.
 - `shared/_core/` 가 공통 파일의 SSOT이다. 템플릿별 `_core/` 를 직접 수정하지 않는다.
 - 템플릿 구조 변경 후 `guides/` 내 해당 문서를 즉시 갱신한다.
 - `_core/refs/` 파일은 참조 전용이다. 수정하지 않는다.

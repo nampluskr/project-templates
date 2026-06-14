@@ -9,6 +9,9 @@ updated: YYYY-MM-DD
 이 파일은 Claude Code가 이 프로젝트를 다룰 때 따르는 진입점 지침이다.
 상세 규칙은 `_core/` 를 참조한다.
 
+본 워크스페이스는 하나의 Git Repository 를 하나의 코딩 프로젝트로 간주한다.
+AI CLI 는 `src/` 에 코드를 작성·정제하고, `experiments/` 에 실험을 기록하며, `outputs/` 에 결과를 저장한다.
+
 ## 1. 프로젝트 개요
 
 - **이름**: {{PROJECT_NAME}}
@@ -39,27 +42,53 @@ updated: YYYY-MM-DD
 |---|---|
 | `_core/` | 프로젝트 운영 규칙, 커맨드, 가이드, 세션 |
 | `data/` | 데이터 경로 또는 설명 |
-| `src/` | 소스 코드 루트 |
-| `scripts/` | 실행 가능한 스크립트 |
-| `notebooks/` | Jupyter 노트북 |
+| `src/` | 소스 코드 루트 — 재사용 가능한 모듈·클래스·함수 |
+| `scripts/` | 실행 가능한 스크립트 — 파이프라인, 전처리, 배치 |
+| `notebooks/` | Jupyter 노트북 — 탐색·시각화·프로토타입 |
 | `tests/` | 테스트 코드 |
 | `configs/` | 설정 파일 |
 | `experiments/` | 실험 기록 및 실행 메타데이터 |
 | `docs/` | 프로젝트 문서 |
 | `outputs/` | 모델, 그래프, 예측, 내보내기 결과 |
 
-## 4. 핵심 행동 규칙
+## 4. 자료 흐름
 
-- 작업 전 `_core/rules/agent-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
+자료는 다음 순서로 이동한다.
+
+```text
+data/ → notebooks/ → src/ → experiments/ → outputs/
+```
+
+| 단계 | 폴더 | 의미 |
+|---|---|---|
+| Data | `data/` | 원본 데이터 참조 또는 경로 관리 |
+| Exploration | `notebooks/` | 탐색·시각화·프로토타입 |
+| Implementation | `src/` | 정제된 코드를 모듈로 구조화 |
+| Experiment | `experiments/` | 실험 실행 및 결과 기록 |
+| Output | `outputs/` | 최종 결과물 저장 |
+
+## 5. 핵심 행동 규칙
+
+- 작업 전 `_core/rules/agent-rules.md` 와 `_core/rules/coding-rules.md` 를 참조한다.
+- 마크다운 문서 작성·수정 시 `_core/rules/docs-rules.md` 를 따른다.
+- Python 스크립트 작성·수정 시 `_core/rules/python-rules.md` 를 따른다.
+- 탐색·프로토타입은 `notebooks/` 에서 시작하고, 재사용 코드는 `src/` 로 이동한다.
+- 실험은 `experiments/` 에 기록하고, 최종 결과는 `outputs/` 에 저장한다.
+- 새 소스 파일을 만들 때 첫 줄에 한 줄 한국어 주석으로 파일 역할을 기록한다.
 - 루트 폴더 구조는 변경하지 않는다.
 
-## 5. 참조 경로
+## 6. 참조 경로
 
 | 항목 | 경로 |
 |---|---|
 | 에이전트 규칙 | `_core/rules/agent-rules.md` |
-| 마크다운 규칙 | `_core/rules/markdown-rules.md` |
+| 마크다운 규칙 | `_core/rules/docs-rules.md` |
+| Python 규칙 | `_core/rules/python-rules.md` |
+| 코딩 규칙 | `_core/rules/coding-rules.md` |
+| 코딩 가이드 | `_core/docs/coding-guide.md` |
+| 주제 분류 | `_core/docs/subject-guide.md` |
 | 프로젝트 가이드 | `_core/docs/project-guide.md` |
+| 프로젝트 명세 | `_core/docs/project-spec.md` |
+| 할일 관리 | `_core/docs/project-todo.md` |
 | 작업 이력 | `_core/docs/project-log.md` |
 | 세션 핸드오프 | `_core/commands/session-handoff.md` |

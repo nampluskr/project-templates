@@ -41,7 +41,7 @@ inbox/ → sources/ → docs/ → outputs/
 _core/
 ├── rules/
 │   ├── agent-rules.md
-│   └── markdown-rules.md
+│   └── docs-rules.md
 ├── commands/
 │   └── session-handoff.md
 ├── docs/

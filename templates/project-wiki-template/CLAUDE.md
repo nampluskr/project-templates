@@ -61,7 +61,8 @@ inbox/ → sources/ → wiki/ → docs/ → outputs/
 ## 5. 핵심 행동 규칙
 
 - 작업 전 `_core/rules/agent-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
+- 마크다운 문서 작성·수정 시 `_core/rules/docs-rules.md` 를 따른다.
+- Python 스크립트 작성·수정 시 `_core/rules/python-rules.md` 를 따른다.
 - `wiki/` 운영은 `_core/rules/wiki-rules.md` 를 따른다.
 - 새로운 정보는 우선 `wiki/` 에 반영한다. `docs/` 를 직접 수정하지 않는다.
 - `wiki/` 문서 생성·수정 시 YAML frontmatter, 내부 링크, Related 섹션, index 문서를 함께 관리한다.
@@ -82,8 +83,11 @@ inbox/ → sources/ → wiki/ → docs/ → outputs/
 | 항목 | 경로 |
 |---|---|
 | 에이전트 규칙 | `_core/rules/agent-rules.md` |
-| 마크다운 규칙 | `_core/rules/markdown-rules.md` |
+| 마크다운 규칙 | `_core/rules/docs-rules.md` |
+| Python 규칙 | `_core/rules/python-rules.md` |
 | Wiki 운영 규칙 | `_core/rules/wiki-rules.md` |
+| Wiki 운영 가이드 | `_core/docs/wiki-guide.md` |
+| 주제 분류 | `_core/docs/subject-guide.md` |
 | 프로젝트 가이드 | `_core/docs/project-guide.md` |
 | 프로젝트 명세 | `_core/docs/project-spec.md` |
 | 할일 관리 | `_core/docs/project-todo.md` |

@@ -1,21 +1,11 @@
-"""
-create_project.py
-
-템플릿을 복사하여 새 프로젝트를 생성한다.
-
-사용법:
-    python _core/scripts/create_project.py \\
-        --template project-docs-template \\
-        --name new-project-name \\
-        --dest /mnt/d/projects/nampluskr/00_review
-"""
+# create_project.py: Copy a template to create a new project directory.
 
 import argparse
+import os
 import shutil
-from pathlib import Path
 
-REPO_ROOT = Path(__file__).parent.parent.parent
-TEMPLATES_DIR = REPO_ROOT / "templates"
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+TEMPLATES_DIR = os.path.join(REPO_ROOT, "templates")
 
 TEMPLATES = [
     "project-docs-template",
@@ -30,27 +20,28 @@ PLACEHOLDER_FILES = [
 ]
 
 
-def copy_template(src: Path, dest: Path) -> int:
+def copy_template(src: str, dest: str) -> int:
     count = 0
-    for item in src.rglob("*"):
-        rel = item.relative_to(src)
-        target = dest / rel
-        if item.is_dir():
-            target.mkdir(parents=True, exist_ok=True)
-        else:
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(item, target)
+    for dirpath, dirnames, filenames in os.walk(src):
+        rel_dir = os.path.relpath(dirpath, src)
+        target_dir = os.path.join(dest, rel_dir)
+        os.makedirs(target_dir, exist_ok=True)
+        for filename in filenames:
+            src_file = os.path.join(dirpath, filename)
+            dest_file = os.path.join(target_dir, filename)
+            shutil.copy2(src_file, dest_file)
             count += 1
     return count
 
 
-def find_placeholders(dest: Path) -> list[tuple[Path, list[str]]]:
+def find_placeholders(dest: str) -> list[tuple[str, list[str]]]:
     results = []
     for filename in PLACEHOLDER_FILES:
-        path = dest / filename
-        if not path.exists():
+        path = os.path.join(dest, filename)
+        if not os.path.exists(path):
             continue
-        text = path.read_text(encoding="utf-8")
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
         found = [p for p in ["{{PROJECT_NAME}}", "{{PROJECT_SLUG}}", "{{PROJECT_DESCRIPTION}}"] if p in text]
         if found:
             results.append((path, found))
@@ -64,14 +55,14 @@ def main() -> None:
     parser.add_argument("--dest", required=True, help="생성할 상위 디렉토리 경로")
     args = parser.parse_args()
 
-    src = TEMPLATES_DIR / args.template
-    dest = Path(args.dest) / args.name
+    src = os.path.join(TEMPLATES_DIR, args.template)
+    dest = os.path.join(args.dest, args.name)
 
-    if not src.exists():
+    if not os.path.exists(src):
         print(f"오류: 템플릿을 찾을 수 없습니다 — {src}")
         raise SystemExit(1)
 
-    if dest.exists():
+    if os.path.exists(dest):
         print(f"오류: 대상 경로가 이미 존재합니다 — {dest}")
         raise SystemExit(1)
 
@@ -80,7 +71,7 @@ def main() -> None:
     print(f"경로:    {dest}")
     print()
 
-    dest.mkdir(parents=True)
+    os.makedirs(dest)
     count = copy_template(src, dest)
     print(f"완료: {count}개 파일 복사")
 
@@ -88,7 +79,7 @@ def main() -> None:
     if placeholders:
         print("\n플레이스홀더 치환이 필요한 파일:")
         for path, tokens in placeholders:
-            rel = path.relative_to(dest)
+            rel = os.path.relpath(path, dest)
             print(f"  {rel}  —  {', '.join(tokens)}")
 
     print(f"\n다음 단계: VS Code로 {dest}/ 를 열어 플레이스홀더를 치환하세요.")

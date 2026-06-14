@@ -42,7 +42,7 @@ inbox/ → sources/ → wiki/ → docs/ → outputs/
 _core/
 ├── rules/
 │   ├── agent-rules.md
-│   ├── markdown-rules.md
+│   ├── docs-rules.md
 │   └── wiki-rules.md      # wiki/ 운영 규칙
 ├── commands/
 │   └── session-handoff.md
@@ -50,6 +50,7 @@ _core/
 │   ├── project-guide.md   # 이 파일
 │   ├── project-spec.md
 │   ├── project-todo.md
-│   └── project-log.md
+│   ├── project-log.md
+│   └── wiki-guide.md      # wiki/ 운영 방식
 └── sessions/
 ```

@@ -29,7 +29,7 @@ updated: YYYY-MM-DD
 ## 3. 핵심 행동 규칙
 
 - 작업 전 `_core/rules/agent-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
+- 모든 마크다운 문서는 `_core/rules/docs-rules.md` 를 따른다.
 - 루트 폴더 구조는 변경하지 않는다.
 
 ## 4. 응답 스타일

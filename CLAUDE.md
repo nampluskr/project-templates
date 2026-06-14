@@ -87,7 +87,7 @@ project-templates/
 | 항목 | 경로 |
 |---|---|
 | 에이전트 행동 규칙 | `_core/rules/agent-rules.md` |
-| 문서 작성 스타일 규칙 | `_core/rules/markdown-rules.md` |
+| 문서 작성 스타일 규칙 | `_core/rules/docs-rules.md` |
 | 템플릿 관리 규칙 | `_core/rules/template-rules.md` |
 | 구조 설명 및 가이드 | `_core/docs/core-guide.md` |
 | 템플릿 설계 이력 | `_core/docs/design-log.md` |
@@ -98,7 +98,7 @@ project-templates/
 ## 5. 핵심 행동 규칙
 
 - 작업 전 반드시 `_core/rules/agent-rules.md` 와 `_core/rules/template-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
+- 모든 마크다운 문서는 `_core/rules/docs-rules.md` 를 따른다.
 - `shared/` 가 공통 파일의 SSOT이다. 템플릿별 공통 파일을 직접 수정하지 않는다.
 - 공통 변경은 `shared/` 수정 후 `sync_shared.py` 로 동기화한다. 템플릿 전용 변경은 해당 템플릿에서 직접 수정한다.
 - `README.md`, `.gitignore` 는 템플릿별 독립 관리 파일이다. `shared/` 에 두지 않는다.
@@ -116,7 +116,7 @@ project-templates/
 ### 6.2. 규칙
 
 - [[agent-rules]] — 에이전트 허용/금지 행동
-- [[markdown-rules]] — 문서 작성 스타일
+- [[docs-rules]] — 문서 작성 스타일
 - [[template-rules]] — 템플릿 구조 및 관리 규칙
 
 ### 6.3. 커맨드
