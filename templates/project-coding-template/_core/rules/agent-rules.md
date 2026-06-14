@@ -1,7 +1,7 @@
 ---
 tags: [project, rules]
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
+created: 2026-06-14
+updated: 2026-06-14
 ---
 
 # agent-rules.md

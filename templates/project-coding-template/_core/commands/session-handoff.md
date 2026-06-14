@@ -1,7 +1,7 @@
 ---
 tags: [project, commands]
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
+created: 2026-06-14
+updated: 2026-06-14
 ---
 
 # 커스텀 명령어: `session-handoff` / `세션 핸드오프`

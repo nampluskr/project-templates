@@ -25,19 +25,18 @@ project-templates/
 ├── _core/               # 이 레포 자체 운영 파일
 │   ├── rules/
 │   ├── commands/
-│   ├── docs/
-│   ├── sessions/
+│   ├── docs/            # 구조 설명 및 운영 가이드
+│   ├── sessions/        # 세션 핸드오프 문서
+│   ├── scripts/         # 자동화 스크립트
 │   └── refs/            # 참조 전용 문서
 ├── shared/              # 템플릿 공통 파일 원본 (SSOT)
 │   └── _core/
 │       ├── rules/
 │       └── commands/
-├── templates/           # 복사 가능한 프로젝트 템플릿
-│   ├── project-docs-template/
-│   ├── project-wiki-template/
-│   └── project-coding-template/
-├── guides/              # 사용·관리 가이드 문서
-└── scripts/             # 자동화 스크립트
+└── templates/           # 복사 가능한 프로젝트 템플릿
+    ├── project-docs-template/
+    ├── project-wiki-template/
+    └── project-coding-template/
 ```
 
 ## 3. 템플릿 종류
@@ -84,7 +83,7 @@ project-templates/
 - 작업 전 반드시 `_core/rules/agent-rules.md` 와 `_core/rules/template-rules.md` 를 참조한다.
 - 모든 마크다운 문서는 `_core/rules/markdown-rules.md` 를 따른다.
 - `shared/_core/` 가 공통 파일의 SSOT이다. 템플릿별 `_core/` 를 직접 수정하지 않는다.
-- 템플릿 구조 변경 후 `guides/` 내 해당 문서를 즉시 갱신한다.
+- 템플릿 구조 변경 후 `_core/docs/` 내 해당 문서를 즉시 갱신한다.
 - `_core/refs/` 파일은 참조 전용이다. 수정하지 않는다.
 - 새 프로젝트 생성 후 해당 프로젝트 내부는 이 레포 범위 밖이다.
 
