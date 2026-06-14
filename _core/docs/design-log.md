@@ -18,3 +18,4 @@ updated: 2026-06-15
 | 2026-06-15 | `shared/` 에 공통 빈 폴더 추가 — `inbox/`, `sources/`, `docs/`, `outputs/`, `_core/sessions/` | |
 | 2026-06-15 | `README.md`, `.gitignore` sync 제외 결정 — 템플릿별 독립 관리 | |
 | 2026-06-15 | 워크스페이스 목적 명시 — 하위 프로젝트 설계 메타 레포, 하위 프로젝트 작업은 이 레포 범위 밖 | CLAUDE.md, core-guide.md 반영 |
+| 2026-06-15 | `project-docs-template` 의 `python-rules.md` 포함은 의도적 설계 — docs 프로젝트는 마크다운 문서 내 파이썬 코드 블럭 삽입을 기본으로 가정하며, 에이전트가 파이썬 스크립트를 생성할 수 있으므로 `python-rules.md` 참조가 필요하다 | |

@@ -1,7 +1,7 @@
 ---
 tags: [templates, rules]
 created: 2026-06-14
-updated: 2026-06-14
+updated: 2026-06-15
 ---
 
 # template-rules.md
@@ -43,7 +43,15 @@ updated: 2026-06-14
 - 생성 후 프로젝트 내부 파일은 이 레포 범위 밖이다.
 - 생성 절차는 `_core/commands/new-project.md` 를 따른다.
 
-## 5. 금지 사항
+## 5. docs-template 설계 원칙
+
+`project-docs-template` 은 마크다운 문서 작성을 기본으로 하되, 다음을 전제한다.
+
+- 마크다운 문서 내 파이썬 코드 블럭 삽입을 기본으로 가정한다.
+- 에이전트가 파이썬 스크립트를 생성할 수 있으므로 `python-rules.md` 를 공통 rules 에 포함한다.
+- 따라서 `docs-template` 의 `CLAUDE.md` 에 `python-rules.md` 참조가 포함되는 것은 의도적 설계이다.
+
+## 6. 금지 사항
 
 다음 사항은 템플릿에 추가하지 않는다.
 
