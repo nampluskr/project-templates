@@ -91,4 +91,10 @@ data/ → notebooks/ → src/ → experiments/ → outputs/
 | 프로젝트 명세 | `_core/docs/project-spec.md` |
 | 할일 관리 | `_core/docs/project-todo.md` |
 | 작업 이력 | `_core/docs/project-log.md` |
+| 세션 시작 | `_core/commands/session-start.md` |
+| 세션 종료 | `_core/commands/session-end.md` |
 | 세션 핸드오프 | `_core/commands/session-handoff.md` |
+| 프로젝트 초기화 | `_core/commands/project-init.md` |
+| 프로젝트 상태 | `_core/commands/project-status.md` |
+| 프로젝트 업데이트 | `_core/commands/project-update.md` |
+| 커밋 메시지 | `_core/commands/commit-message.md` |

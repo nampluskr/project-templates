@@ -43,14 +43,22 @@ _core/
 ├── rules/
 │   ├── agent-rules.md
 │   ├── docs-rules.md
+│   ├── python-rules.md
 │   └── wiki-rules.md      # wiki/ 운영 규칙
 ├── commands/
-│   └── session-handoff.md
+│   ├── session-start.md
+│   ├── session-end.md
+│   ├── session-handoff.md
+│   ├── project-init.md
+│   ├── project-status.md
+│   ├── project-update.md
+│   └── commit-message.md
 ├── docs/
 │   ├── project-guide.md   # 이 파일
 │   ├── project-spec.md
 │   ├── project-todo.md
 │   ├── project-log.md
+│   ├── subject-guide.md
 │   └── wiki-guide.md      # wiki/ 운영 방식
 └── sessions/
 ```

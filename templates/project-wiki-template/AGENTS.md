@@ -22,6 +22,7 @@ updated: YYYY-MM-DD
 ├── _core/        # 프로젝트 운영 파일
 ├── inbox/        # 미분류 입력 자료
 ├── sources/      # 정리된 참고 자료
+├── wiki/         # 프로젝트 전용 지식 저장소 (SSOT)
 ├── docs/         # 최종 문서
 └── outputs/      # 생성물, 빌드 결과
 ```
@@ -29,7 +30,9 @@ updated: YYYY-MM-DD
 ## 3. 핵심 행동 규칙
 
 - 작업 전 `_core/rules/agent-rules.md` 를 참조한다.
-- 모든 마크다운 문서는 `_core/rules/docs-rules.md` 를 따른다.
+- 마크다운 문서 작성·수정 시 `_core/rules/docs-rules.md` 를 따른다.
+- Python 스크립트 작성·수정 시 `_core/rules/python-rules.md` 를 따른다.
+- `wiki/` 운영은 `_core/rules/wiki-rules.md` 를 따른다.
 - 루트 폴더 구조는 변경하지 않는다.
 
 ## 4. 응답 스타일
