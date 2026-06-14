@@ -7,7 +7,7 @@ updated: YYYY-MM-DD
 # coding-guide.md
 
 이 프로젝트의 코딩 작업 방식을 설명한다.
-사람이 참조하는 문서이다. 에이전트 행동 규칙은 `_core/rules/coding-rules.md` 를 참조한다.
+사용자가 참조하는 문서이다. 에이전트 행동 규칙은 `_core/rules/coding-rules.md` 를 참조한다.
 
 ## 1. 목적
 

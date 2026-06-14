@@ -133,7 +133,7 @@ updated: YYYY-MM-DD
 
 | 필드 | 의미 |
 |---|---|
-| `title` | 사람이 읽는 문서 제목 |
+| `title` | 사용자가 읽는 문서 제목 |
 | `type` | 문서 유형 |
 | `status` | 문서 작성 상태 |
 | `tags` | Obsidian 검색 및 분류용 태그 |
